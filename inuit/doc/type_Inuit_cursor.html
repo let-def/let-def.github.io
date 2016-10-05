@@ -1,0 +1,67 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Inuit" rel="Chapter" href="Inuit.html">
+<link title="Inuit_base" rel="Chapter" href="Inuit_base.html">
+<link title="Inuit_cursor" rel="Chapter" href="Inuit_cursor.html">
+<link title="Inuit_region" rel="Chapter" href="Inuit_region.html">
+<link title="Inuit_remote" rel="Chapter" href="Inuit_remote.html">
+<link title="Inuit_trace" rel="Chapter" href="Inuit_trace.html">
+<link title="Inuit_widget" rel="Chapter" href="Inuit_widget.html"><title>Inuit_cursor</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;cursor
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;clickable&nbsp;=&nbsp;<span class="keywordsign">'</span>flags
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">constraint</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;=&nbsp;[&gt;&nbsp;<span class="keywordsign">`</span><span class="constructor">Clickable</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">`</span><span class="constructor">Clicked</span>&nbsp;]
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;null&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Inuit_cursor</span>.cursor
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;text&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?flags:<span class="keywordsign">'</span>flags&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;clear&nbsp;:&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;kill&nbsp;:&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;sub&nbsp;:&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;observe&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<span class="keywordsign">`</span><span class="constructor">Local</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">`</span><span class="constructor">Remote</span>&nbsp;]&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_base</span>.patch&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;list&nbsp;*&nbsp;(unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;option)&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_closed&nbsp;:&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;region&nbsp;:&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_region</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_flag&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;rem_flag&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;mem_flag&nbsp;:&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_flags&nbsp;:&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;with_flags&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>flags&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_indent&nbsp;:&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;with_indent&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;shift_indent&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;clickable&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;([&gt;&nbsp;<span class="keywordsign">`</span><span class="constructor">Clickable</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">`</span><span class="constructor">Clicked</span>&nbsp;]&nbsp;<span class="keyword">as</span>&nbsp;<span class="keywordsign">'</span>a)&nbsp;<span class="constructor">Inuit_cursor</span>.clickable
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Inuit_cursor</span>.cursor
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;printf&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;?flags:<span class="keywordsign">'</span>flags&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;unit,&nbsp;string,&nbsp;unit)&nbsp;<span class="constructor">Pervasives</span>.format4&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;link&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;([&gt;&nbsp;<span class="keywordsign">`</span><span class="constructor">Clickable</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">`</span><span class="constructor">Clicked</span>&nbsp;]&nbsp;<span class="keyword">as</span>&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Inuit_cursor</span>.clickable
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;?flags:<span class="keywordsign">'</span>b&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;unit,&nbsp;string,&nbsp;(<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pervasives</span>.format4&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cursor_of_region&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;?flags:<span class="keywordsign">'</span>flags&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;?indent:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_region</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_cursor</span>.cursor&nbsp;*&nbsp;<span class="keywordsign">'</span>flags&nbsp;<span class="constructor">Inuit_base</span>.patch&nbsp;<span class="constructor">Inuit_base</span>.socket
+<span class="keyword">end</span></code></body></html>
