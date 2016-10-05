@@ -1,0 +1,21 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Hll" rel="Chapter" href="Hll.html"><title>Hll</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;error:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Hll</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add&nbsp;:&nbsp;<span class="constructor">Hll</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int64&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;estimate_memory&nbsp;:&nbsp;error:float&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;card&nbsp;:&nbsp;<span class="constructor">Hll</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;copy&nbsp;:&nbsp;<span class="constructor">Hll</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Hll</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;merge&nbsp;:&nbsp;into:<span class="constructor">Hll</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Hll</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;clear&nbsp;:&nbsp;<span class="constructor">Hll</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;hash_int64&nbsp;:&nbsp;int64&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int64
+<span class="keyword">end</span></code></body></html>

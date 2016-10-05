@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Order_indir.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Order_list" rel="Chapter" href="Order_list.html">
+<link title="Order_indir" rel="Chapter" href="Order_indir.html">
+<link title="Order_managed" rel="Chapter" href="Order_managed.html"><link title="Memory management" rel="Section" href="#1_Memorymanagement">
+<title>Order_managed</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Order_indir.html" title="Order_indir">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Order_managed.html">Order_managed</a></h1>
+
+<pre><span class="keyword">module</span> Order_managed: <code class="code">sig</code> <a href="Order_managed.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<h0 id="0_Basicorderingoperations">Basic ordering operations</h0><br>
+</div>
+<hr width="100%">
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
+<div class="info ">
+An element of an ordering.<br>
+</div>
+
+
+<pre><span id="VALroot"><span class="keyword">val</span> root</span> : <code class="type">unit -> <a href="Order_managed.html#TYPEt">t</a></code></pre><div class="info ">
+Create a new ordering with a single element. O(1)<br>
+</div>
+
+<pre><span id="VALafter"><span class="keyword">val</span> after</span> : <code class="type"><a href="Order_managed.html#TYPEt">t</a> -> <a href="Order_managed.html#TYPEt">t</a></code></pre><div class="info ">
+<code class="code">after t</code> inserts a new element to the ordering, greater than <code class="code">t</code> but
+    less than all existing elements greater than <code class="code">t</code>.
+<p>
+
+    O(1) amortized.<br>
+</div>
+
+<pre><span id="VALbefore"><span class="keyword">val</span> before</span> : <code class="type"><a href="Order_managed.html#TYPEt">t</a> -> <a href="Order_managed.html#TYPEt">t</a></code></pre><div class="info ">
+<code class="code">before t</code> inserts a new element to the ordering, less than <code class="code">t</code> but
+    greater than all existing elements less than <code class="code">t</code>.
+<p>
+
+    O(1) amortized.<br>
+</div>
+
+<pre><span id="VALsame_order"><span class="keyword">val</span> same_order</span> : <code class="type"><a href="Order_managed.html#TYPEt">t</a> -> <a href="Order_managed.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+Check if two elements belong to the same order. O(1)<br>
+</div>
+
+<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="Order_managed.html#TYPEt">t</a> -> <a href="Order_managed.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+Compare two elements. O(1)<br>
+</div>
+
+<pre><span id="VALcardinal"><span class="keyword">val</span> cardinal</span> : <code class="type"><a href="Order_managed.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+How many elements are ordered. O(1)<br>
+</div>
+<br>
+<h1 id="1_Memorymanagement">Memory management</h1><br>
+
+<pre><span id="VALforget"><span class="keyword">val</span> forget</span> : <code class="type"><a href="Order_managed.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+When you know you are not going to use an element any longer, <code class="code">forget</code> it
+    to release memory.  It makes operations slightly faster to not have to wait
+    for the GC to release elements.<br>
+</div>
+
+<pre><span id="VALis_valid"><span class="keyword">val</span> is_valid</span> : <code class="type"><a href="Order_managed.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+After calling <code class="code">forget</code>, an element should not be used.
+    You can check if it is the case with <code class="code">is_valid</code>.<br>
+</div>
+<br>
+Algorithm due to:
+    Two Simplified Algorithms for Maintaining Order in a List
+    Bender et al., 2002<br>
+
+<pre><span id="VALunsafe_check"><span class="keyword">val</span> unsafe_check</span> : <code class="type"><a href="Order_managed.html#TYPEt">t</a> -> string -> unit</code></pre></body></html>

@@ -1,0 +1,24 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Order_list" rel="Chapter" href="Order_list.html">
+<link title="Order_indir" rel="Chapter" href="Order_indir.html">
+<link title="Order_managed" rel="Chapter" href="Order_managed.html"><title>Order_managed</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;root&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Order_managed</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;after&nbsp;:&nbsp;<span class="constructor">Order_managed</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Order_managed</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;before&nbsp;:&nbsp;<span class="constructor">Order_managed</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Order_managed</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;same_order&nbsp;:&nbsp;<span class="constructor">Order_managed</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Order_managed</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:&nbsp;<span class="constructor">Order_managed</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Order_managed</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;cardinal&nbsp;:&nbsp;<span class="constructor">Order_managed</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;forget&nbsp;:&nbsp;<span class="constructor">Order_managed</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is_valid&nbsp;:&nbsp;<span class="constructor">Order_managed</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;unsafe_check&nbsp;:&nbsp;<span class="constructor">Order_managed</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+<span class="keyword">end</span></code></body></html>

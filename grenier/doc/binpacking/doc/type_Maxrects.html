@@ -1,0 +1,47 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Maxrects" rel="Chapter" href="Maxrects.html"><title>Maxrects</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;<span class="keywordsign">'</span>bin&nbsp;t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;empty&nbsp;:&nbsp;<span class="keywordsign">'</span>bin&nbsp;<span class="constructor">Maxrects</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_bin&nbsp;:&nbsp;<span class="keywordsign">'</span>bin&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>bin&nbsp;<span class="constructor">Maxrects</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>bin&nbsp;<span class="constructor">Maxrects</span>.t
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;<span class="keywordsign">'</span>tag&nbsp;box&nbsp;=&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;tag&nbsp;:&nbsp;<span class="keywordsign">'</span>tag;
+&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;:&nbsp;int;
+&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;:&nbsp;int;
+&nbsp;&nbsp;&nbsp;&nbsp;allow_rotation&nbsp;:&nbsp;bool;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;box&nbsp;:&nbsp;?allow_rotation:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>tag&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>tag&nbsp;<span class="constructor">Maxrects</span>.box
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;(<span class="keywordsign">'</span>bin,&nbsp;<span class="keywordsign">'</span>tag)&nbsp;rect&nbsp;=&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;:&nbsp;int;
+&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;:&nbsp;int;
+&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;:&nbsp;int;
+&nbsp;&nbsp;&nbsp;&nbsp;h&nbsp;:&nbsp;int;
+&nbsp;&nbsp;&nbsp;&nbsp;rotated&nbsp;:&nbsp;bool;
+&nbsp;&nbsp;&nbsp;&nbsp;bin&nbsp;:&nbsp;<span class="keywordsign">'</span>bin;
+&nbsp;&nbsp;&nbsp;&nbsp;box&nbsp;:&nbsp;<span class="keywordsign">'</span>tag&nbsp;<span class="constructor">Maxrects</span>.box;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;heuristic&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<span class="keywordsign">`</span><span class="constructor">Area_fit</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">`</span><span class="constructor">Bottom_left</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">`</span><span class="constructor">Long_side_fit</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">`</span><span class="constructor">Short_side_fit</span>&nbsp;]
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;insert&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>bin&nbsp;<span class="constructor">Maxrects</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;?heuristic:<span class="constructor">Maxrects</span>.heuristic&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>tag&nbsp;<span class="constructor">Maxrects</span>.box&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>bin&nbsp;<span class="constructor">Maxrects</span>.t&nbsp;*&nbsp;(<span class="keywordsign">'</span>bin,&nbsp;<span class="keywordsign">'</span>tag)&nbsp;<span class="constructor">Maxrects</span>.rect&nbsp;option
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;insert_batch&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>bin&nbsp;<span class="constructor">Maxrects</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;?heuristic:<span class="constructor">Maxrects</span>.heuristic&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>tag&nbsp;<span class="constructor">Maxrects</span>.box&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>bin&nbsp;<span class="constructor">Maxrects</span>.t&nbsp;*&nbsp;(<span class="keywordsign">'</span>bin,&nbsp;<span class="keywordsign">'</span>tag)&nbsp;<span class="constructor">Maxrects</span>.rect&nbsp;option&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;insert_global&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>bin&nbsp;<span class="constructor">Maxrects</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;?heuristic:<span class="constructor">Maxrects</span>.heuristic&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>tag&nbsp;<span class="constructor">Maxrects</span>.box&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>bin&nbsp;<span class="constructor">Maxrects</span>.t&nbsp;*&nbsp;(<span class="keywordsign">'</span>bin,&nbsp;<span class="keywordsign">'</span>tag)&nbsp;<span class="constructor">Maxrects</span>.rect&nbsp;option&nbsp;list
+<span class="keyword">end</span></code></body></html>

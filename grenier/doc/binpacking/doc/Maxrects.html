@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Maxrects" rel="Chapter" href="Maxrects.html"><title>Maxrects</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Maxrects.html">Maxrects</a></h1>
+
+<pre><span class="keyword">module</span> Maxrects: <code class="code">sig</code> <a href="Maxrects.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<code class="code">make ~width ~height</code> return a packer ready to place stuff in a
+    <code class="code">width * height</code> area<br>
+</div>
+<hr width="100%">
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type">'bin</code> t</span> </pre>
+
+
+<pre><span id="VALempty"><span class="keyword">val</span> empty</span> : <code class="type">'bin <a href="Maxrects.html#TYPEt">t</a></code></pre>
+<pre><span id="VALadd_bin"><span class="keyword">val</span> add_bin</span> : <code class="type">'bin -> int -> int -> 'bin <a href="Maxrects.html#TYPEt">t</a> -> 'bin <a href="Maxrects.html#TYPEt">t</a></code></pre><div class="info ">
+<code class="code">make ~width ~height</code> return a packer ready to place stuff in a
+    <code class="code">width * height</code> area<br>
+</div>
+
+<pre><code><span id="TYPEbox"><span class="keyword">type</span> <code class="type">'tag</code> box</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbox.tag">tag</span>&nbsp;: <code class="type">'tag</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbox.width">width</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbox.height">height</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTbox.allow_rotation">allow_rotation</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+can the box be rotated to optimize packing<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+}
+
+<div class="info ">
+Input to packing is a box<br>
+</div>
+
+
+<pre><span id="VALbox"><span class="keyword">val</span> box</span> : <code class="type">?allow_rotation:bool -> 'tag -> int -> int -> 'tag <a href="Maxrects.html#TYPEbox">box</a></code></pre>
+<pre><code><span id="TYPErect"><span class="keyword">type</span> <code class="type">('bin, 'tag)</code> rect</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrect.x">x</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrect.y">y</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrect.w">w</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrect.h">h</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrect.rotated">rotated</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+True iff the input box was rotated.
+                      If true, w = box.height &amp;&amp; h = box.width
+                      Otherwise, w = box.width &amp;&amp; h = box.height<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrect.bin">bin</span>&nbsp;: <code class="type">'bin</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrect.box">box</span>&nbsp;: <code class="type">'tag <a href="Maxrects.html#TYPEbox">box</a></code>;</code></td>
+
+</tr></table>
+}
+
+<div class="info ">
+Output of packing is an optional rectangle<br>
+</div>
+
+
+<pre><span id="TYPEheuristic"><span class="keyword">type</span> <code class="type"></code>heuristic</span> = <code class="type">[ `Area_fit | `Bottom_left | `Long_side_fit | `Short_side_fit ]</code> </pre>
+
+
+<pre><span id="VALinsert"><span class="keyword">val</span> insert</span> : <code class="type">'bin <a href="Maxrects.html#TYPEt">t</a> -><br>       ?heuristic:<a href="Maxrects.html#TYPEheuristic">heuristic</a> -><br>       'tag <a href="Maxrects.html#TYPEbox">box</a> -> 'bin <a href="Maxrects.html#TYPEt">t</a> * ('bin, 'tag) <a href="Maxrects.html#TYPErect">rect</a> option</code></pre><div class="info ">
+Online insertion of one item.
+    Efficient but the packing is not very good.
+<p>
+
+    Worst-case: O(n^3) (n is total number of items inserted).<br>
+</div>
+
+<pre><span id="VALinsert_batch"><span class="keyword">val</span> insert_batch</span> : <code class="type">'bin <a href="Maxrects.html#TYPEt">t</a> -><br>       ?heuristic:<a href="Maxrects.html#TYPEheuristic">heuristic</a> -><br>       'tag <a href="Maxrects.html#TYPEbox">box</a> list -><br>       'bin <a href="Maxrects.html#TYPEt">t</a> * ('bin, 'tag) <a href="Maxrects.html#TYPErect">rect</a> option list</code></pre><div class="info ">
+Online insertion of a batch of items.
+    Runtime is roughly the cost of inserting each item independently, but order
+    of insertion is chosen to give a better packing.
+<p>
+
+    Worst-case: O(n^4) (n is total number of items inserted).<br>
+</div>
+
+<pre><span id="VALinsert_global"><span class="keyword">val</span> insert_global</span> : <code class="type">'bin <a href="Maxrects.html#TYPEt">t</a> -><br>       ?heuristic:<a href="Maxrects.html#TYPEheuristic">heuristic</a> -><br>       'tag <a href="Maxrects.html#TYPEbox">box</a> list -><br>       'bin <a href="Maxrects.html#TYPEt">t</a> * ('bin, 'tag) <a href="Maxrects.html#TYPErect">rect</a> option list</code></pre><div class="info ">
+Offline insertion.
+    Better packing but way too slow for real-time usage.
+<p>
+
+    Worst-case: O(n^5) (n is total number of items inserted).<br>
+</div>
+</body></html>

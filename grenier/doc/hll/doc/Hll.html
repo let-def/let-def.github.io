@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Hll" rel="Chapter" href="Hll.html"><title>Hll</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Hll.html">Hll</a></h1>
+
+<pre><span class="keyword">module</span> Hll: <code class="code">sig</code> <a href="Hll.html">..</a> <code class="code">end</code></pre><div class="info module top">
+An implementation of HyperLogLog probabilistic cardinality estimator.<br>
+</div>
+<hr width="100%">
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
+<div class="info ">
+Type of HyperLogLog counters<br>
+</div>
+
+
+<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type">error:float -> <a href="Hll.html#TYPEt">t</a></code></pre><div class="info ">
+Create a new counter with <code class="code">error</code> error rate.
+    <code class="code">error</code> should verify <code class="code">0.0 &lt; error &amp;&amp; error &lt; 1.0</code>.
+    <code class="code">0.05</code> is a reasonable default.
+<p>
+
+    Use <code class="code">estimate_memory</code> to measure memory consumption and runtime of this
+    function.<br>
+</div>
+
+<pre><span id="VALadd"><span class="keyword">val</span> add</span> : <code class="type"><a href="Hll.html#TYPEt">t</a> -> int64 -> unit</code></pre><div class="info ">
+<code class="code">add t k</code> counts item <code class="code">k</code> in <code class="code">t</code>.
+<p>
+
+    <code class="code">k</code> should be "random": it should be the output of some cryptographic
+    hashing algorithm like SHA.  It is not treated as an integer.
+    This is key to getting proper results.
+    No patterns should appear in the bits of the different items added.
+<p>
+
+    Runtime is O(1).<br>
+</div>
+
+<pre><span id="VALestimate_memory"><span class="keyword">val</span> estimate_memory</span> : <code class="type">error:float -> int</code></pre><div class="info ">
+Estimate the memory consumed in bytes by a counter with the specified error
+    rate.
+<p>
+
+    This ignores the constant overhead of the OCaml representation, around
+    height words:
+<p>
+<ul>
+<li>one record, one header + four fields = 5 words</li>
+<li>one float,  one header + payload = 2 or 3 words</li>
+<li>one string, one header + estimated size</li>
+</ul>
+<br>
+</div>
+
+<pre><span id="VALcard"><span class="keyword">val</span> card</span> : <code class="type"><a href="Hll.html#TYPEt">t</a> -> float</code></pre><div class="info ">
+Get the cardinality estimation.<br>
+</div>
+
+<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type"><a href="Hll.html#TYPEt">t</a> -> <a href="Hll.html#TYPEt">t</a></code></pre><div class="info ">
+Get a copy of a counter.<br>
+</div>
+
+<pre><span id="VALmerge"><span class="keyword">val</span> merge</span> : <code class="type">into:<a href="Hll.html#TYPEt">t</a> -> <a href="Hll.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<code class="code">merge ~into:t0 t'</code> has the same effect as adding all items added to
+    <code class="code">t'</code> to <code class="code">t0</code>.
+<p>
+
+    <code class="code">t0</code> and <code class="code">t'</code> must have been constructed with the same error rate!<br>
+</div>
+
+<pre><span id="VALclear"><span class="keyword">val</span> clear</span> : <code class="type"><a href="Hll.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+Reset counter to 0.<br>
+</div>
+
+<pre><span id="VALhash_int64"><span class="keyword">val</span> hash_int64</span> : <code class="type">int64 -> int64</code></pre><div class="info ">
+The following algorithm provide a reasonable hashing function for integers,
+    if you want to feed the HLL with "normal" integers.<br>
+</div>
+</body></html>

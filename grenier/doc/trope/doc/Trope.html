@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Trope" rel="Chapter" href="Trope.html"><link title="Cursor management" rel="Section" href="#1_Cursormanagement">
+<link title="Creation and removal of cursors" rel="Subsection" href="#2_Creationandremovalofcursors">
+<link title="Modification of buffers" rel="Subsection" href="#2_Modificationofbuffers">
+<link title="Looking up cursors in the buffer" rel="Subsection" href="#2_Lookingupcursorsinthebuffer">
+<title>Trope</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Trope.html">Trope</a></h1>
+
+<pre><span class="keyword">module</span> Trope: <code class="code">sig</code> <a href="Trope.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<h1 id="1_Buffermanagement">Buffer management</h1><br>
+</div>
+<hr width="100%">
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type">'a</code> t</span> </pre>
+<div class="info ">
+Type of semi-persistent buffers<br>
+</div>
+
+
+<pre><span id="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">unit -> 'a <a href="Trope.html#TYPEt">t</a></code></pre><div class="info ">
+Create a new lineage of buffers<br>
+</div>
+
+<pre><span id="VALclear"><span class="keyword">val</span> clear</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> 'a <a href="Trope.html#TYPEt">t</a></code></pre><div class="info ">
+Clear contents of a buffer<br>
+</div>
+
+<pre><span id="VALis_empty"><span class="keyword">val</span> is_empty</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+true iff is buffer empty ?<br>
+</div>
+
+<pre><span id="VALremove"><span class="keyword">val</span> remove</span> : <code class="type">?left_of:unit -> 'a <a href="Trope.html#TYPEt">t</a> -> at:int -> len:int -> 'a <a href="Trope.html#TYPEt">t</a></code></pre><div class="info ">
+Shift contents of the buffer by removing <code class="code">len</code> units starting at <code class="code">at</code>.
+    Valid iff <code class="code">at &gt;= 0 &amp;&amp; len &gt;= 0</code>.
+    Cursors exactly at position <code class="code">at</code> are removed iff called with <code class="code">~left_of:()</code>.<br>
+</div>
+
+<pre><span id="VALinsert"><span class="keyword">val</span> insert</span> : <code class="type">?left_of:unit -> 'a <a href="Trope.html#TYPEt">t</a> -> at:int -> len:int -> 'a <a href="Trope.html#TYPEt">t</a></code></pre><div class="info ">
+Shift contents of the buffer by inserting <code class="code">len</code> units starting at <code class="code">at</code>.
+    Valid iff <code class="code">at &gt;= 0 &amp;&amp; len &gt;= 0</code>.
+    Cursors exactly at position <code class="code">at</code> are shifted iff called with <code class="code">~left_of:()</code>.<br>
+</div>
+<br>
+<h1 id="1_Cursormanagement">Cursor management</h1><br>
+
+<pre><span id="TYPEcursor"><span class="keyword">type</span> <code class="type"></code>cursor</span> </pre>
+<div class="info ">
+Type of cursors<br>
+</div>
+
+
+<pre><span id="VALmember"><span class="keyword">val</span> member</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> bool</code></pre><div class="info ">
+Is a cursor member of a buffer ?<br>
+</div>
+
+<pre><span id="VALfind"><span class="keyword">val</span> find</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> 'a</code></pre><div class="info ">
+Find value associated to a cursor, or raise <code class="code">Not_found</code><br>
+</div>
+
+<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="Trope.html#TYPEcursor">cursor</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> int</code></pre><div class="info ">
+Compare the position of two cursors<br>
+</div>
+
+<pre><span id="VALposition"><span class="keyword">val</span> position</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> int</code></pre><div class="info ">
+Get the physical position of a cursor in a revision of a buffer<br>
+</div>
+<br>
+<h2 id="2_Creationandremovalofcursors">Creation and removal of cursors</h2><br>
+
+<pre><span id="VALput_cursor"><span class="keyword">val</span> put_cursor</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> at:int -> 'a -> 'a <a href="Trope.html#TYPEt">t</a> * <a href="Trope.html#TYPEcursor">cursor</a></code></pre><div class="info ">
+Create a new cursors at position <code class="code">at</code>
+    Valid iff <code class="code">at &gt;= 0</code>.<br>
+</div>
+
+<pre><span id="VALput_left"><span class="keyword">val</span> put_left</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> 'a -> 'a <a href="Trope.html#TYPEt">t</a></code></pre><div class="info ">
+Insert or update a cursor.
+    Cursor is inserted at the left-most valid position.<br>
+</div>
+
+<pre><span id="VALput_right"><span class="keyword">val</span> put_right</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> 'a -> 'a <a href="Trope.html#TYPEt">t</a></code></pre><div class="info ">
+Insert or update a cursor.
+    Cursor is inserted at the right-most valid position before buffer end.<br>
+</div>
+
+<pre><span id="VALrem_cursor"><span class="keyword">val</span> rem_cursor</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> 'a <a href="Trope.html#TYPEt">t</a></code></pre><div class="info ">
+<code class="code">rem_cursor t c</code> removes a cursor from the buffer.
+    Valid iff <code class="code">member t c</code>.<br>
+</div>
+
+<pre><span id="VALcursor_after"><span class="keyword">val</span> cursor_after</span> : <code class="type"><a href="Trope.html#TYPEcursor">cursor</a> -> <a href="Trope.html#TYPEcursor">cursor</a></code></pre><div class="info ">
+<code class="code">cursor_after c</code> creates a cursor that is immediately after <code class="code">c</code>.<br>
+</div>
+
+<pre><span id="VALcursor_before"><span class="keyword">val</span> cursor_before</span> : <code class="type"><a href="Trope.html#TYPEcursor">cursor</a> -> <a href="Trope.html#TYPEcursor">cursor</a></code></pre><div class="info ">
+<code class="code">cursor_before c</code> creates a cursor that is immediately before <code class="code">c</code>.<br>
+</div>
+
+<pre><span id="VALcursor_at_origin"><span class="keyword">val</span> cursor_at_origin</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a></code></pre><div class="info ">
+<code class="code">cursor_at_origin t</code> creates a cursor that is minimal for <code class="code">t</code> (before all
+    other cursors in <code class="code">t</code>)<br>
+</div>
+<br>
+<h2 id="2_Modificationofbuffers">Modification of buffers</h2><br>
+
+<pre><span id="VALremove_between"><span class="keyword">val</span> remove_between</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> 'a <a href="Trope.html#TYPEt">t</a></code></pre><div class="info ">
+Remove anything between two cursors.
+    <code class="code">remove_between t a b</code> is valid iff
+      <code class="code">member t a &amp;&amp; member t b &amp;&amp; compare a b &lt;= 0</code><br>
+</div>
+
+<pre><span id="VALremove_before"><span class="keyword">val</span> remove_before</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> int -> 'a <a href="Trope.html#TYPEt">t</a></code></pre><div class="info ">
+<code class="code">remove_before t c len</code> removes <code class="code">len</code> units before <code class="code">c</code>.
+    Valid iff <code class="code">member t c &amp;&amp; len &gt;= 0</code>.<br>
+</div>
+
+<pre><span id="VALremove_after"><span class="keyword">val</span> remove_after</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> int -> 'a <a href="Trope.html#TYPEt">t</a></code></pre><div class="info ">
+<code class="code">remove_after t c len</code> removes <code class="code">len</code> units after <code class="code">c</code>.
+    Valid iff <code class="code">member t c &amp;&amp; len &gt;= 0</code>.<br>
+</div>
+
+<pre><span id="VALinsert_before"><span class="keyword">val</span> insert_before</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> int -> 'a <a href="Trope.html#TYPEt">t</a></code></pre><div class="info ">
+<code class="code">insert_before t c len</code> inserts <code class="code">len</code> units before <code class="code">c</code>.
+    Valid iff <code class="code">member t c &amp;&amp; len &gt;= 0</code>.<br>
+</div>
+
+<pre><span id="VALinsert_after"><span class="keyword">val</span> insert_after</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> int -> 'a <a href="Trope.html#TYPEt">t</a></code></pre><div class="info ">
+<code class="code">insert_before t c len</code> inserts <code class="code">len</code> units after <code class="code">c</code>.
+    Valid iff <code class="code">member t c &amp;&amp; len &gt;= 0</code>.<br>
+</div>
+<br>
+<h2 id="2_Lookingupcursorsinthebuffer">Looking up cursors in the buffer</h2><br>
+
+<pre><span id="VALfind_before"><span class="keyword">val</span> find_before</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> int -> (<a href="Trope.html#TYPEcursor">cursor</a> * 'a) option</code></pre><div class="info ">
+<code class="code">find_before t at</code>
+    finds the last cursor <code class="code">c</code> in <code class="code">t</code> satisfying <code class="code">position t c &lt;= at</code><br>
+</div>
+
+<pre><span id="VALfind_after"><span class="keyword">val</span> find_after</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> int -> (<a href="Trope.html#TYPEcursor">cursor</a> * 'a) option</code></pre><div class="info ">
+<code class="code">find_after t at</code>
+    finds the first cursor <code class="code">c</code> in <code class="code">t</code> satisfying <code class="code">position t c &gt;= at</code><br>
+</div>
+
+<pre><span id="VALseek_before"><span class="keyword">val</span> seek_before</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> (<a href="Trope.html#TYPEcursor">cursor</a> * 'a) option</code></pre><div class="info ">
+<code class="code">seek_before t c</code>
+    finds the last cursor <code class="code">c'</code> in <code class="code">t</code> satisfying <code class="code">compare c' c &lt; 0</code><br>
+</div>
+
+<pre><span id="VALseek_after"><span class="keyword">val</span> seek_after</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> <a href="Trope.html#TYPEcursor">cursor</a> -> (<a href="Trope.html#TYPEcursor">cursor</a> * 'a) option</code></pre><div class="info ">
+<code class="code">seek_after t c</code>
+    finds the first cursor <code class="code">c'</code> in <code class="code">t</code> satisfying <code class="code">compare c' c &gt; 0</code><br>
+</div>
+
+<pre><span id="VALto_list"><span class="keyword">val</span> to_list</span> : <code class="type">'a <a href="Trope.html#TYPEt">t</a> -> (int * <a href="Trope.html#TYPEcursor">cursor</a> * 'a) list</code></pre></body></html>

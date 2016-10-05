@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Doubledouble" rel="Chapter" href="Doubledouble.html"><title>Doubledouble</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Doubledouble.html">Doubledouble</a></h1>
+
+<pre><span class="keyword">module</span> Doubledouble: <code class="code">sig</code> <a href="Doubledouble.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<h1 id="1_Doubledoublearithmetic">Double-double arithmetic</h1>
+<p>
+
+Copyright (c) 2013, Frederic Bour &lt;frederic.bour (at) lakaban.net&gt;
+All rights reserved.
+<p>
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+<p>
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+<p>
+
+* Redistributions in binary form must reproduce the above copyright notice, this
+  list of conditions and the following disclaimer in the documentation and/or
+  other materials provided with the distribution.
+<p>
+
+* Neither the name of the organization nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+<p>
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*<br>
+</div>
+<hr width="100%">
+
+<pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.hi">hi</span>&nbsp;: <code class="type">float</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.lo">lo</span>&nbsp;: <code class="type">float</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><span id="VALt"><span class="keyword">val</span> t</span> : <code class="type">float -> float -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALof_float"><span class="keyword">val</span> of_float</span> : <code class="type">float -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALto_float"><span class="keyword">val</span> to_float</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> float</code></pre>
+<pre><span id="VALof_int"><span class="keyword">val</span> of_int</span> : <code class="type">int -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALto_int"><span class="keyword">val</span> to_int</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> int</code></pre>
+<pre><span id="VALdump"><span class="keyword">val</span> dump</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> string</code></pre>
+<pre><span id="VALto_string_std"><span class="keyword">val</span> to_string_std</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> string</code></pre>
+<pre><span id="VALto_string_sci"><span class="keyword">val</span> to_string_sci</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> string</code></pre>
+<pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> string</code></pre>
+<pre><span id="VALof_string"><span class="keyword">val</span> of_string</span> : <code class="type">string -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALis_nan"><span class="keyword">val</span> is_nan</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> bool</code></pre>
+<pre><span id="VALis_zero"><span class="keyword">val</span> is_zero</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> bool</code></pre>
+<pre><span id="VALis_negative"><span class="keyword">val</span> is_negative</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> bool</code></pre>
+<pre><span id="VALis_positive"><span class="keyword">val</span> is_positive</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> bool</code></pre>
+<pre><span id="VALeq"><span class="keyword">val</span> eq</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a> -> bool</code></pre>
+<pre><span id="VALne"><span class="keyword">val</span> ne</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a> -> bool</code></pre>
+<pre><span id="VALgt"><span class="keyword">val</span> gt</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a> -> bool</code></pre>
+<pre><span id="VALge"><span class="keyword">val</span> ge</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a> -> bool</code></pre>
+<pre><span id="VALlt"><span class="keyword">val</span> lt</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a> -> bool</code></pre>
+<pre><span id="VALle"><span class="keyword">val</span> le</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a> -> bool</code></pre>
+<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a> -> int</code></pre>
+<pre><span id="VALsignum"><span class="keyword">val</span> signum</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> int</code></pre>
+<pre><span id="VALadd"><span class="keyword">val</span> add</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALsub"><span class="keyword">val</span> sub</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALmul"><span class="keyword">val</span> mul</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALdiv"><span class="keyword">val</span> div</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALneg"><span class="keyword">val</span> neg</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALinv"><span class="keyword">val</span> inv</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALfloor"><span class="keyword">val</span> floor</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALceil"><span class="keyword">val</span> ceil</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALabs"><span class="keyword">val</span> abs</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALtrunc"><span class="keyword">val</span> trunc</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALsqr"><span class="keyword">val</span> sqr</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALsqrt"><span class="keyword">val</span> sqrt</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALpow"><span class="keyword">val</span> pow</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a> -> int -> <a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALpi"><span class="keyword">val</span> pi</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALtwo_pi"><span class="keyword">val</span> two_pi</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALpi_2"><span class="keyword">val</span> pi_2</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALe"><span class="keyword">val</span> e</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALnan"><span class="keyword">val</span> nan</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALzero"><span class="keyword">val</span> zero</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALone"><span class="keyword">val</span> one</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALten"><span class="keyword">val</span> ten</span> : <code class="type"><a href="Doubledouble.html#TYPEt">t</a></code></pre>
+<pre><span id="VALk_eps"><span class="keyword">val</span> k_eps</span> : <code class="type">float</code></pre>
+<pre><span class="keyword">module</span> <a href="Doubledouble.Infix.html">Infix</a>: <code class="code">sig</code> <a href="Doubledouble.Infix.html">..</a> <code class="code">end</code></pre></body></html>

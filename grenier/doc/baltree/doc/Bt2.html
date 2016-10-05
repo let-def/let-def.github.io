@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Bt1.html">
+<link rel="next" href="Mbt.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Bt1" rel="Chapter" href="Bt1.html">
+<link title="Bt2" rel="Chapter" href="Bt2.html">
+<link title="Mbt" rel="Chapter" href="Mbt.html"><link title="Convenience functions" rel="Section" href="#1_Conveniencefunctions">
+<title>Bt2</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Bt1.html" title="Bt1">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Mbt.html" title="Mbt">Next</a>
+</div>
+<h1>Module <a href="type_Bt2.html">Bt2</a></h1>
+
+<pre><span class="keyword">module</span> Bt2: <code class="code">sig</code> <a href="Bt2.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<h1 id="1_Typeofbalancedtreeswithtwocustomvaluesmoreefficientthanapair">Type of balanced trees with two custom values (more efficient than a pair)</h1><br>
+</div>
+<hr width="100%">
+
+<pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type">('a, 'b)</code> t</span> = private </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.Leaf"><span class="constructor">Leaf</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.Node"><span class="constructor">Node</span></span> <span class="keyword">of</span> <code class="type">int * ('a, 'b) <a href="Bt2.html#TYPEt">t</a> * 'a * 'b * ('a, 'b) <a href="Bt2.html#TYPEt">t</a></code></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<code class="code">Node(size, l, x, r)</code> where:<ul>
+<li><code class="code">size</code> is the number of elements in the tree,</li>
+<li><code class="code">l</code> is the left sub-tree</li>
+<li><code class="code">x</code> is a user-defined value</li>
+<li><code class="code">r</code> is the right sub-tree.</li>
+</ul>
+
+      Trees are guaranteed balanced by construction, the depth of all branches
+      is O(log <code class="code">size</code>).<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+
+
+
+<pre><span id="VALleaf"><span class="keyword">val</span> leaf</span> : <code class="type">('a, 'b) <a href="Bt2.html#TYPEt">t</a></code></pre><div class="info ">
+Leaf constructor, the empty tree<br>
+</div>
+
+<pre><span id="VALnode"><span class="keyword">val</span> node</span> : <code class="type">('a, 'b) <a href="Bt2.html#TYPEt">t</a> -> 'a -> 'b -> ('a, 'b) <a href="Bt2.html#TYPEt">t</a> -> ('a, 'b) <a href="Bt2.html#TYPEt">t</a></code></pre><div class="info ">
+Smart Node constructor, ensuring that the resulting tree is balanced and
+    has the appropriate size.
+<p>
+
+    Cost of <code class="code">node l x r</code> is expected to be O(log |<code class="code">size l</code> - <code class="code">size r</code>|)
+    amortized, i.e proportional to the logarithm of the disbalance.
+    In particular, if <code class="code">l</code> and <code class="code">r</code> are similarly-sized, it operates in constant
+    time on average.
+    NOT PROVEN
+<p>
+
+    User-values can be moved in different subtrees of the result, but the
+    ordering is preserved (so data stay correct if the operation applied on
+    values is associative or the relation expected between them is transitive).<br>
+</div>
+<br>
+<h1 id="1_Conveniencefunctions">Convenience functions</h1><br>
+
+<pre><span id="VALsize"><span class="keyword">val</span> size</span> : <code class="type">('a, 'b) <a href="Bt2.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+Accessor to the size<br>
+</div>
+
+<pre><span id="VALjoin"><span class="keyword">val</span> join</span> : <code class="type">('a, 'b) <a href="Bt2.html#TYPEt">t</a> -> ('a, 'b) <a href="Bt2.html#TYPEt">t</a> -> ('a, 'b) <a href="Bt2.html#TYPEt">t</a></code></pre><div class="info ">
+Concatenate two trees.
+    Cost of <code class="code">join l r</code> is O(log (min <code class="code">size l</code> <code class="code">size r</code>)).
+    NOT PROVEN<br>
+</div>
+
+<pre><span id="VALrank"><span class="keyword">val</span> rank</span> : <code class="type">int -> ('a, 'b) <a href="Bt2.html#TYPEt">t</a> -> 'a * 'b</code></pre><div class="info ">
+Return the n'th node in tree order<br>
+</div>
+</body></html>

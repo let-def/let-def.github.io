@@ -1,0 +1,159 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Trope" rel="Chapter" href="Trope.html"><title>Index of values</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Index of values</h1>
+<table>
+<tr><td align="left"><br>C</td></tr>
+<tr><td><a href="Trope.html#VALclear">clear</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+Clear contents of a buffer
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALcompare">compare</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+Compare the position of two cursors
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALcreate">create</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+Create a new lineage of buffers
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALcursor_after">cursor_after</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+<code class="code">cursor_after c</code> creates a cursor that is immediately after <code class="code">c</code>.
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALcursor_at_origin">cursor_at_origin</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+<code class="code">cursor_at_origin t</code> creates a cursor that is minimal for <code class="code">t</code> (before all
+    other cursors in <code class="code">t</code>)
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALcursor_before">cursor_before</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+<code class="code">cursor_before c</code> creates a cursor that is immediately before <code class="code">c</code>.
+</div>
+</td></tr>
+<tr><td align="left"><br>F</td></tr>
+<tr><td><a href="Trope.html#VALfind">find</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+Find value associated to a cursor, or raise <code class="code">Not_found</code>
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALfind_after">find_after</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+<code class="code">find_after t at</code>
+    finds the first cursor <code class="code">c</code> in <code class="code">t</code> satisfying <code class="code">position t c &gt;= at</code>
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALfind_before">find_before</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+<code class="code">find_before t at</code>
+    finds the last cursor <code class="code">c</code> in <code class="code">t</code> satisfying <code class="code">position t c &lt;= at</code>
+</div>
+</td></tr>
+<tr><td align="left"><br>I</td></tr>
+<tr><td><a href="Trope.html#VALinsert">insert</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+Shift contents of the buffer by inserting <code class="code">len</code> units starting at <code class="code">at</code>.
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALinsert_after">insert_after</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+<code class="code">insert_before t c len</code> inserts <code class="code">len</code> units after <code class="code">c</code>.
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALinsert_before">insert_before</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+<code class="code">insert_before t c len</code> inserts <code class="code">len</code> units before <code class="code">c</code>.
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALis_empty">is_empty</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+true iff is buffer empty ?
+</div>
+</td></tr>
+<tr><td align="left"><br>M</td></tr>
+<tr><td><a href="Trope.html#VALmember">member</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+Is a cursor member of a buffer ?
+</div>
+</td></tr>
+<tr><td align="left"><br>P</td></tr>
+<tr><td><a href="Trope.html#VALposition">position</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+Get the physical position of a cursor in a revision of a buffer
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALput_cursor">put_cursor</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+Create a new cursors at position <code class="code">at</code>
+    Valid iff <code class="code">at &gt;= 0</code>.
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALput_left">put_left</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+Insert or update a cursor.
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALput_right">put_right</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+Insert or update a cursor.
+</div>
+</td></tr>
+<tr><td align="left"><br>R</td></tr>
+<tr><td><a href="Trope.html#VALrem_cursor">rem_cursor</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+<code class="code">rem_cursor t c</code> removes a cursor from the buffer.
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALremove">remove</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+Shift contents of the buffer by removing <code class="code">len</code> units starting at <code class="code">at</code>.
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALremove_after">remove_after</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+<code class="code">remove_after t c len</code> removes <code class="code">len</code> units after <code class="code">c</code>.
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALremove_before">remove_before</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+<code class="code">remove_before t c len</code> removes <code class="code">len</code> units before <code class="code">c</code>.
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALremove_between">remove_between</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+Remove anything between two cursors.
+</div>
+</td></tr>
+<tr><td align="left"><br>S</td></tr>
+<tr><td><a href="Trope.html#VALseek_after">seek_after</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+<code class="code">seek_after t c</code>
+    finds the first cursor <code class="code">c'</code> in <code class="code">t</code> satisfying <code class="code">compare c' c &gt; 0</code>
+</div>
+</td></tr>
+<tr><td><a href="Trope.html#VALseek_before">seek_before</a> [<a href="Trope.html">Trope</a>]</td>
+<td><div class="info">
+<code class="code">seek_before t c</code>
+    finds the last cursor <code class="code">c'</code> in <code class="code">t</code> satisfying <code class="code">compare c' c &lt; 0</code>
+</div>
+</td></tr>
+<tr><td align="left"><br>T</td></tr>
+<tr><td><a href="Trope.html#VALto_list">to_list</a> [<a href="Trope.html">Trope</a>]</td>
+<td></td></tr>
+</table>
+</body>
+</html>
